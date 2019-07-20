@@ -1,0 +1,65 @@
+.message{
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 400px;
+    height: 20px;
+}
+h1{
+    margin: 10px;
+}
+#title{
+    margin: 10px;
+    font-weight:bold;
+    font-style: italic;
+    color: rgb(70, 69, 69);
+
+}
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    background-color: #efeff1;
+    margin-top: 60px;
+  }
+  .tolistdiv{
+    background-color: white;
+    margin: 10px;
+    width:  600px;
+    border-radius: 10px;
+  }
+  .tolist{
+      margin: 10px;
+  }
+  .addbutton{
+     width: 70px;
+     height: 25px;
+     background: rgb(252, 153, 154);
+     border-radius: 5px;
+     color:white
+  }
+  .myul{
+      list-style-type: demical;
+  }
+  li{
+      
+     position: relative;
+     left: -10px; 
+     margin:3px 0 3px 0;
+     height: 25px;
+
+  }
+  .buttondiv{
+      text-align: center;
+  }
+.bt{
+   
+      margin: 10px;
+      color: rgb(252, 153, 154);
+      border: none;
+      background: white;
+  }
