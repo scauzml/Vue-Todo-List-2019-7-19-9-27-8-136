@@ -23,7 +23,7 @@ export default {
   },
   methods:{
      check(item){
-         console.log(item.state)
+         this.$emit("changeState",item);
      }
   }
 }

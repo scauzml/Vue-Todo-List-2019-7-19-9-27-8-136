@@ -15,7 +15,7 @@
        v-for="(todo,index) in todos"
        v-bind:key="index"
        v-bind:todo="todo"
-       ></li>
+       @changeState="updateState" ></li>
    </ol>
    <div class="buttondiv">
     <button class="bt" @click="all">ALL</button>
@@ -30,9 +30,6 @@
 import todoitem from './todo-item'
 export default {
   name: 'todolist',
-  props: {
-    msg: String
-  },
   components: {
     todoitem
   },
@@ -42,8 +39,6 @@ export default {
       newTodoText:'',
       todos: [],
       todos1:[],
-      activetodo:[],
-      completetodo:[],
       nextTodoId: 0
       }
   },
@@ -61,22 +56,42 @@ export default {
       },
 
       findEven(array){
-        return array.map((e,index)=>{
+        return array.map((e,index,arr)=>{
            e.isEven=index%2===0;
        });
       },
 
       all(){
-      this.todos= this.$options.methods.findEven(this.todos1);
+      this.todos=this.todos1;
+       this.todos=this.todos.map((e,index,arr)=>{
+           e.isEven=(index+1)%2===0;
+           return e;
+       });
       },
       active(){
        this.todos=this.todos1.filter(e=>e.state === false)
-       this.todos= this.$options.methods.findEven(this.todos);
+       this.todos=this.todos.map((e,index)=>{
+         console.log(index)
+           e.isEven=(index+1)%2===0;
+           return e;
+       });
+     //  this.todos= this.$options.methods.findEven(this.todos);
       },
 
       complete(){
        this.todos=this.todos1.filter(e=>e.state === true)
-       this.todos= this.$options.methods.findEven(this.todos);
+        this.todos=this.todos.map((e,index,arr)=>{
+           e.isEven=(index+1)%2===0;
+           return e;
+       });
+     //  this.todos= this.$options.methods.findEven(this.todos);
+      },
+      updateState(item){
+           let array=this.todos1.filter(e=>e.id===item.id)
+           if(array.length>0){
+             let item1=array[0];
+             item1.state=true;
+           }
       }
 
       
