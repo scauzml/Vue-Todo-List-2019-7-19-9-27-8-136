@@ -13,15 +13,14 @@
        <li
        is="todoitem"
        v-for="(todo,index) in todos"
-       v-bind:key="todo.id"
-       v-bind:title="todo.title"
-       v-on:remove="todos.splice(index,1)"
+       v-bind:key="index"
+       v-bind:todo="todo"
        ></li>
    </ol>
    <div class="buttondiv">
-    <button class="bt">ALL</button>
-    <button class="bt">Active</button>
-     <button class="bt">Complete</button>
+    <button class="bt" @click="all">ALL</button>
+    <button class="bt" @click="active">Active</button>
+     <button class="bt" @click="complete">Complete</button>
    </div>
 
   </div>
@@ -40,35 +39,48 @@ export default {
   data(){
 
       return {
-          newTodoText:'',
-      todos: [
-      {
-        id: 1,
-        title: '123',
-        status:''
-      },
-      {
-        id: 2,
-        title: '456',
-        status:''
-      },
-      {
-        id: 3,
-        title: '789',
-        status:''
-      }
-    ],
-    nextTodoId: 4
+      newTodoText:'',
+      todos: [],
+      todos1:[],
+      activetodo:[],
+      completetodo:[],
+      nextTodoId: 0
       }
   },
-  
+
   methods:{
       addNewTodo(){
-          this.todos.push({
+          let item={
               id:this.nextTodoId++,
-              title:this.newTodoText
-          })
+              title:this.newTodoText,
+              state:false
+          }
+          item.isEven=this.nextTodoId%2===0;
+          this.todos1.push(item);
+          this.todos.push(item);
+      },
+
+      findEven(array){
+        return array.map((e,index)=>{
+           e.isEven=index%2===0;
+       });
+      },
+
+      all(){
+      this.todos= this.$options.methods.findEven(this.todos1);
+      },
+      active(){
+       this.todos=this.todos1.filter(e=>e.state === false)
+       this.todos= this.$options.methods.findEven(this.todos);
+      },
+
+      complete(){
+       this.todos=this.todos1.filter(e=>e.state === true)
+       this.todos= this.$options.methods.findEven(this.todos);
       }
+
+      
+
   }
 }
 </script>

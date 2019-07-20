@@ -56,6 +56,7 @@ h1{
   .buttondiv{
       text-align: center;
   }
+
 .bt{
    
       margin: 10px;
@@ -63,3 +64,6 @@ h1{
       border: none;
       background: white;
   }
+.active{
+    background: rgb(244, 236, 236);
+}

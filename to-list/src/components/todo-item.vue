@@ -1,12 +1,11 @@
 <template>
   <div class="todoitem">
-    <li>
+    <li class="todo" v-bind:class="{ active: todo.isEven }">
         <div class="checkbox-item">
-            <input type="checkbox" >
-            <label>{{title}}</label>
+            <input type="checkbox" name="checkbox" @click="check(todo)" v-model="todo.state">
+            <label class="checkbox-label" >{{todo.title}}</label>
         </div>
-
-       
+ 
     </li>
   </div>
 </template>
@@ -15,12 +14,17 @@
 export default {
   name: 'todolist',
   props: {
-    title: String
+    todo: Object
   },
   data(){
       return {
-       a:"suceess"
+       
       }
+  },
+  methods:{
+     check(item){
+         console.log(item.state)
+     }
   }
 }
 </script>
