@@ -130,3 +130,26 @@ input[type="checkbox"]:checked::before{
     border: 1px solid #2647b3;
     
 }
+
+/* 添加buttonx */
+.display{
+    display: none;
+}
+.display1{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    margin: auto 0;
+    margin-bottom: auto;
+    font-size: 30px;
+    color: #cc9a9a;
+    line-height: 10px;
+    transition: color 0.2s ease-out;
+    background: transparent;
+    border: none;
+
+}

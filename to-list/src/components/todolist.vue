@@ -15,7 +15,9 @@
        v-for="(todo,index) in todos"
        v-bind:key="index"
        v-bind:todo="todo"
-       @changeState="updateState" ></li>
+       @changeState="updateState" 
+       @remove="removeTodo">
+       </li>
    </ol>
    <div class="buttondiv">
     <button class="bt" @click="all">ALL</button>
@@ -49,7 +51,7 @@ export default {
               id:this.nextTodoId++,
               title:this.newTodoText,
               state:false,
-              bianji:false
+              bianji:false,
           }
           item.isEven=this.nextTodoId%2===0;
           this.todos1.push(item);
@@ -72,7 +74,7 @@ export default {
       active(){
        this.todos=this.todos1.filter(e=>e.state === false)
        this.todos=this.todos.map((e,index)=>{
-         console.log(index)
+         
            e.isEven=(index+1)%2===0;
            return e;
        });
@@ -82,6 +84,7 @@ export default {
       complete(){
        this.todos=this.todos1.filter(e=>e.state === true)
         this.todos=this.todos.map((e,index,arr)=>{
+        
            e.isEven=(index+1)%2===0;
            return e;
        });
@@ -93,7 +96,14 @@ export default {
              let item1=array[0];
              item1.state=true;
            }
-      }
+      },
+      removeTodo: function (todo) {
+
+				var index = this.todos1.indexOf(todo);
+        this.todos1.splice(index, 1);
+        var index1=this.todos.indexOf(todo);
+        this.todos.splice(index1,1)
+			},
 
       
 
