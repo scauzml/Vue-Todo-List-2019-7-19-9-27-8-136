@@ -67,3 +67,16 @@ h1{
 .active{
     background: rgb(244, 236, 236);
 }
+.edit{
+   display: none;
+   margin-right: 10px;
+    margin-left: 10px;
+    width: 400px;
+    height: 20px;
+}
+.editdisplay{
+    display:block
+}
+.checkboxdisplay{
+    display: none
+}

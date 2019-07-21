@@ -48,7 +48,8 @@ export default {
           let item={
               id:this.nextTodoId++,
               title:this.newTodoText,
-              state:false
+              state:false,
+              bianji:false
           }
           item.isEven=this.nextTodoId%2===0;
           this.todos1.push(item);
