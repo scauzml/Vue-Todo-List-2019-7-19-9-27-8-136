@@ -6,7 +6,7 @@
             <label class="checkbox-label" v-bind:class="{ addline: todo.state }" @dblclick="Edit(todo)" >{{todo.title}}</label>
             <button class="display" v-bind:class="{display1:display1}" @click="remove(todo)">&times;</button>
         </div>
- 				<input class="edit" v-bind:class="{ editdisplay: editdisplay1}" type="text"  v-model="todo.title"  @blur="doneEdit(todo)" @keydown.enter="doneEdit(todo)" @keydown.esc="cancelEdit(todo)">
+ 				<input class="edit" v-bind:class="{ editdisplay: editdisplay1}" type="text" v-todo-focus="todo == editedTodo" v-model="todo.title"  @blur="doneEdit(todo)" @keydown.enter="doneEdit(todo)" @keydown.esc="cancelEdit(todo)">
     </li>
   </div>
 </template>
@@ -23,6 +23,7 @@ export default {
        editdisplay1:false,
        edittodotitle:null,
        display1:false,
+       editedTodo:null,
       }
   },
   methods:{
@@ -33,6 +34,7 @@ export default {
       this.checkdisplay1=true;
       this.editdisplay1=true;
       this.edittodotitle=this.todo.title;
+      this.editedTodo=todo;
      },
      doneEdit(todo){
        this.checkdisplay1=false;
@@ -58,7 +60,14 @@ export default {
      leavem(){
        this.display1=false;
      }
-  }
+  },
+  directives: {
+			'todo-focus': function (el, binding) {
+				if (binding.value) {
+					el.focus();
+				}
+			}
+		}
 }
 </script>
 
