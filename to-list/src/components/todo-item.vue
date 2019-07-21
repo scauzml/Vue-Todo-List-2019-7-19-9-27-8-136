@@ -2,8 +2,8 @@
   <div class="todoitem">
     <li class="todo" v-bind:class="{ active: todo.isEven }">
         <div class="checkbox-item" v-bind:class="{ checkboxdisplay: checkdisplay1}">
-            <input type="checkbox" name="checkbox" @click="check(todo)" v-model="todo.state">
-            <label class="checkbox-label" @dblclick="Edit(todo)" >{{todo.title}}</label>
+            <input class="inputcheckbox" type="checkbox" name="checkbox" @click="check(todo)" v-model="todo.state">
+            <label class="checkbox-label" v-bind:class="{ addline: todo.state }" @dblclick="Edit(todo)" >{{todo.title}}</label>
         </div>
  				<input class="edit" v-bind:class="{ editdisplay: editdisplay1}" type="text"  v-model="todo.title"  @blur="doneEdit(todo)" @keydown.enter="doneEdit(todo)" @keydown.esc="cancelEdit(todo)">
     </li>

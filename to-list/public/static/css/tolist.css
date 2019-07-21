@@ -14,6 +14,11 @@ h1{
     color: rgb(70, 69, 69);
 
 }
+.checkbox-label{
+   position: relative;
+   top: 2px;
+   left: 3px;
+}
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -50,7 +55,7 @@ h1{
      position: relative;
      left: -10px; 
      margin:3px 0 3px 0;
-     height: 25px;
+     height: 30px;
 
   }
   .buttondiv{
@@ -79,4 +84,49 @@ h1{
 }
 .checkboxdisplay{
     display: none
+}
+.addline{
+    text-decoration: line-through;
+    color: #a1a1a5;
+}
+input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align:  center;
+    vertical-align: middle; 
+    line-height: 18px;
+    position: relative;
+    border-radius: 6px;
+    position: relative;
+    top: 2px;
+    border: 1px solid #d9d9d9;
+   
+}
+input[type="checkbox"]::before{
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: -1px;
+    left: -1px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+}
+input[type="checkbox"]:checked::before{
+    content: "\2713";
+    width: 20px;
+    height: 20px;
+    position: relative;
+    box-shadow:0 0 9px 15px rgb(134, 180, 250) outset;
+    display: inline-block;
+    color:white;
+    background: rgb(59,136,253);
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 1px solid #2647b3;
+    
 }
