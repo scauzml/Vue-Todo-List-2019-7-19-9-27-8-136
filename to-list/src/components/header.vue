@@ -25,23 +25,20 @@ export default {
 
       }
   },
-   computed:{
-    todos(){
-      return this.$store.getters
-    },
-    todos1(){
-    return this.$store.getters
-    }
-  },
+  
   methods:{
       addNewTodo(){
+          if(this.newTodoText!=''){
           let item={
               id:this.nextTodoId++,
               title:this.newTodoText,
               state:false,
               bianji:false,
-          }     
-          this.newTodoText='';
+          }
+          this.$store.commit("addTodos1",item);
+          this.newTodoText='';   
+          }
+           
       },
   },
  

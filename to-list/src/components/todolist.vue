@@ -5,9 +5,8 @@
        is="todoitem"
        v-for="(todo,index) in todos"
        v-bind:key="index"
-       v-bind:todo="todo"
-       @changeState="updateState" 
-       @remove="removeTodo">
+       v-bind:todo="todo" 
+    >
        </li>
    </ol>
   </div>
@@ -25,7 +24,12 @@ export default {
       return {
       }
   },
-
+ computed:{
+   todos(){
+     return  this.$store.getters.getTodos;
+   }
+ }
+ ,
   methods:{
     
 
