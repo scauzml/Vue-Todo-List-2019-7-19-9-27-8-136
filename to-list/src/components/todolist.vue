@@ -56,6 +56,7 @@ export default {
           item.isEven=this.nextTodoId%2===0;
           this.todos1.push(item);
           this.todos.push(item);
+          this.newTodoText='';
       },
 
       findEven(array){
