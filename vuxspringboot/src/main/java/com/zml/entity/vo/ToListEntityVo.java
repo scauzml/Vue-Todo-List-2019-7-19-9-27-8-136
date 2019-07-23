@@ -6,6 +6,7 @@ public class ToListEntityVo {
     private String title;
     private boolean isEven;
     private boolean state;
+    private boolean isRepeated;
 
 
     public ToListEntityVo(int id, String title, boolean isEven, boolean state) {
@@ -14,6 +15,14 @@ public class ToListEntityVo {
         this.isEven = isEven;
         this.state = state;
 
+    }
+
+    public boolean isRepeated() {
+        return isRepeated;
+    }
+
+    public void setRepeated(boolean repeated) {
+        isRepeated = repeated;
     }
 
     public ToListEntityVo() {

@@ -8,7 +8,7 @@ public class ToListEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
+    @Column(unique = true)
     private String title;
     @Column(name = "is_checked")
     private int isChecked;

@@ -40,7 +40,7 @@ export default {
       addNewTodo(){
           if(this.newTodoText!=''&&this.newTodoText!=null){
           let item={
-              title:this.newTodoText,
+              title:this.newTodoText.trim(),
               isEven:false,
               state:false
           }

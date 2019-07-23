@@ -9,6 +9,6 @@ create sequence hibernate_sequence start with 1 increment by 1;
  create table to_list_entity (id integer not null,
   is_checked integer,
    is_even integer,
-   title varchar(255),
+   title varchar(255) unique,
    primary key (id)
    )

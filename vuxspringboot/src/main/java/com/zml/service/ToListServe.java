@@ -16,26 +16,41 @@ public class ToListServe {
     @Autowired
     ToListResposity tolistResposity;
 
-    public ToListEntity save(ToListEntityVo toListEntityVo) {
-        Optional<ToListEntityVo> optional = Optional.of(toListEntityVo);
-        ToListEntity toListEntity = null;
-        ToListEntity toListEntity1=null;
-        if (optional.isPresent()) {
+    public ToListEntityVo save(ToListEntityVo toListEntityVo) {
+        ToListEntityVo toListEntityVo1 = new ToListEntityVo();
+        ToListEntity byTitle = tolistResposity.findByTitle(toListEntityVo.getTitle());
 
-            toListEntity = new ToListEntity();
-            toListEntity.setId(toListEntityVo.getId());
-            toListEntity.setTitle(
-                    toListEntityVo.getTitle()
-            );
-            if (toListEntityVo.isState() == true) {
-                toListEntity.setIsChecked(1);
-            }else {
-                toListEntity.setIsChecked(0);
+        if (byTitle==null) {
+            Optional<ToListEntityVo> optional = Optional.of(toListEntityVo);
+            ToListEntity toListEntity = null;
+            ToListEntity toListEntity1=null;
+            if (optional.isPresent()) {
+
+                toListEntity = new ToListEntity();
+                toListEntity.setId(toListEntityVo.getId());
+                toListEntity.setTitle(
+                        toListEntityVo.getTitle()
+                );
+                if (toListEntityVo.isState() == true) {
+                    toListEntity.setIsChecked(1);
+                }else {
+                    toListEntity.setIsChecked(0);
+                }
+                toListEntity1 =tolistResposity.save(toListEntity);
+
+                toListEntityVo1.setId(toListEntity1.getId());
+                toListEntityVo1.setTitle(toListEntity1.getTitle());
+                toListEntityVo1.setRepeated(false);
+                toListEntityVo1.setEven(toListEntity1.getIsEven()==0?false:true);
+                toListEntityVo1.setState(toListEntity1.getIsChecked()==0?false:true);
+
             }
-            toListEntity1 =tolistResposity.save(toListEntity);
 
+        }else {
+            toListEntityVo1.setRepeated(true);
         }
-        return toListEntity1;
+
+        return toListEntityVo1;
 
     }
 

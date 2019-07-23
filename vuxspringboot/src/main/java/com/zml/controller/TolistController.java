@@ -19,12 +19,11 @@ public class TolistController {
     @Autowired
     ToListServe toListServe;
     @PostMapping()
-    public ResponseEntity addParkingLot(@RequestBody ToListEntityVo toListEntityVot) {
+    public ToListEntityVo addParkingLot(@RequestBody ToListEntityVo toListEntityVot) {
 
-        ToListEntity toListEntity1=toListServe.save(toListEntityVot);
-        return toListEntity1!=null? ResponseEntity.status(HttpStatus.CREATED).body(toListEntity1):ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        ToListEntityVo toListEntityVo = toListServe.save(toListEntityVot);
+        return toListEntityVo;
     }
-
     @GetMapping
     public ResponseEntity getAll() {
         List<ToListEntity> toListEntities = toListServe.findAll();
