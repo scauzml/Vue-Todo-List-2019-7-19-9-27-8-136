@@ -28,7 +28,7 @@ public class TolistController {
     @GetMapping
     public ResponseEntity getAll() {
         List<ToListEntity> toListEntities = toListServe.findAll();
-        return ResponseEntity.ok().body(toListEntities);\
+        return ResponseEntity.ok().body(toListEntities);
     }
 
 

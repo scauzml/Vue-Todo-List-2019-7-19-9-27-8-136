@@ -13,6 +13,8 @@ public class ToListEntity {
     private String title;
     @Column(name = "is_checked")
     private int isChecked;
+    @Column(name = "is_even")
+    private int isEven=0;
 
     public ToListEntity() {
     }
@@ -21,6 +23,14 @@ public class ToListEntity {
         this.id = id;
         this.title = title;
         this.isChecked = isChecked;
+    }
+
+    public int getIsEven() {
+        return isEven;
+    }
+
+    public void setIsEven(int isEven) {
+        this.isEven = isEven;
     }
 
     public int getId() {

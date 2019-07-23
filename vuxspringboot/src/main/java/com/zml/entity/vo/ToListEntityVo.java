@@ -6,14 +6,14 @@ public class ToListEntityVo {
     private String title;
     private boolean isEven;
     private boolean state;
-    private boolean bianji;
 
-    public ToListEntityVo(int id, String title, boolean isEven, boolean state, boolean bianji) {
+
+    public ToListEntityVo(int id, String title, boolean isEven, boolean state) {
         this.id = id;
         this.title = title;
         this.isEven = isEven;
         this.state = state;
-        this.bianji = bianji;
+
     }
 
     public ToListEntityVo() {
@@ -51,11 +51,5 @@ public class ToListEntityVo {
         this.state = state;
     }
 
-    public boolean isBianji() {
-        return bianji;
-    }
 
-    public void setBianji(boolean bianji) {
-        this.bianji = bianji;
-    }
 }

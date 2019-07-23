@@ -1,3 +1,5 @@
+package com.zml;
+
 import com.zml.dao.ToListResposity;
 import com.zml.entity.ToListEntity;
 import org.json.JSONArray;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -28,7 +31,7 @@ public class ToListTest {
     ToListResposity toListResposity;
     @BeforeEach
     public void beforeEach() {
-
+     toListResposity.deleteAll();
     }
 
     @Test
@@ -67,7 +70,7 @@ public class ToListTest {
         String result=this.mockMvc.perform(get("/tolistentitys")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated()).andReturn().getResponse().getContentAsString();
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
         //then
         JSONArray jsonArray = new JSONArray(result);
 

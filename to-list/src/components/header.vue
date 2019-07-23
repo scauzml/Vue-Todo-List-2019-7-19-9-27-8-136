@@ -33,7 +33,7 @@ export default {
    ).catch(reason => {
                 alert(reason)
               });
- }
+ },
   methods:{
       addNewTodo(){
           if(this.newTodoText!=''){
@@ -41,8 +41,7 @@ export default {
               id:this.nextTodoId++,
               title:this.newTodoText,
               isEven:false,
-              state:false,
-              bianji:false,
+              state:false
           }
           this.$store.commit("addTodos1",item);
           this.axios.post("http://localhost:8080/tolistentitys",item).then(
