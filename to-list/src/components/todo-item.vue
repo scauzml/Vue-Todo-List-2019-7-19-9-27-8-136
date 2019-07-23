@@ -2,7 +2,7 @@
   <div class="todoitem">
     <li class="todo" v-bind:class="{ active: todo.isEven }">
         <div class="checkbox-item" v-bind:class="{ checkboxdisplay: checkdisplay1}" @mouseenter="enterm" @mouseleave="leavem">
-            <input class="inputcheckbox" type="checkbox" name="checkbox"  v-model="todo.state" @click="toUpateState">
+            <input class="inputcheckbox" type="checkbox" name="checkbox"  v-model="todo.state" @click="toUpateState(todo)">
             <label class="checkbox-label" v-bind:class="{ addline: todo.state }" @dblclick="Edit(todo)" >{{todo.title}}</label>
             <button class="display" v-bind:class="{display1:display1}" @click="remove(todo)">&times;</button>
         </div>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'todolist',
   props: {
@@ -27,6 +28,10 @@ export default {
       }
   },
   methods:{
+    ...mapActions([
+      'changeState', // map `this.getAllItem()` to `this.$store.dispatch('getAllItem')`
+       'removeItem'
+    ]),
      Edit(todo){
       this.checkdisplay1=true;
       this.editdisplay1=true;
@@ -49,7 +54,9 @@ export default {
         todo.title=this.edittodotitle;
      },
      remove(todo){
-        this.$store.commit("remove",todo);
+
+      this.removeItem(todo);
+
      },
      enterm(){
       this.display1=true;
@@ -57,9 +64,11 @@ export default {
      leavem(){
        this.display1=false;
      },
-     toUpateState(){
-       
+     toUpateState(todo){
+
+       this.changeState(todo);
      }
+
   },
   directives: {
 			'todo-focus': function (el, binding) {

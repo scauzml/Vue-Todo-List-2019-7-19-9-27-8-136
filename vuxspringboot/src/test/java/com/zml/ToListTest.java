@@ -97,7 +97,8 @@ public class ToListTest {
         JSONObject jsonObject = new JSONObject(toListEntityVo);
         //when
         //then
-        String result=this.mockMvc.perform(put("/to-list-entitys/"+toListEntity1.getId()).content(jsonObject.toString())
+        String result=this.mockMvc.perform(put("/to-list-entitys/"+toListEntity1.getId())
+                .content(jsonObject.toString())
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
@@ -121,4 +122,6 @@ public class ToListTest {
                 .andExpect(status().isOk());
 
     }
+
+
 }
