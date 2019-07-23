@@ -2,7 +2,7 @@
   <div class="todoitem">
     <li class="todo" v-bind:class="{ active: todo.isEven }">
         <div class="checkbox-item" v-bind:class="{ checkboxdisplay: checkdisplay1}" @mouseenter="enterm" @mouseleave="leavem">
-            <input class="inputcheckbox" type="checkbox" name="checkbox"  v-model="todo.state">
+            <input class="inputcheckbox" type="checkbox" name="checkbox"  v-model="todo.state" @click="toUpateState">
             <label class="checkbox-label" v-bind:class="{ addline: todo.state }" @dblclick="Edit(todo)" >{{todo.title}}</label>
             <button class="display" v-bind:class="{display1:display1}" @click="remove(todo)">&times;</button>
         </div>
@@ -56,6 +56,9 @@ export default {
      },
      leavem(){
        this.display1=false;
+     },
+     toUpateState(){
+       
      }
   },
   directives: {

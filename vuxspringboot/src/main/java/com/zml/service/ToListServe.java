@@ -24,6 +24,9 @@ public class ToListServe {
 
             toListEntity = new ToListEntity();
             toListEntity.setId(toListEntityVo.getId());
+            toListEntity.setTitle(
+                    toListEntityVo.getTitle()
+            );
             if (toListEntityVo.isState() == true) {
                 toListEntity.setIsChecked(1);
             }else {
@@ -38,6 +41,20 @@ public class ToListServe {
 
     public List<ToListEntity> findAll() {
         return tolistResposity.findAll();
+    }
+
+    public void changeState(String id, ToListEntityVo toListEntityVot) {
+        Optional<ToListEntity> byId = tolistResposity.findById(Integer.valueOf(id));
+        if (byId.isPresent()) {
+            ToListEntity toListEntity = byId.get();
+            if (toListEntityVot.isState()) {
+                toListEntity.setIsChecked(1);
+            }else {
+                toListEntity.setIsChecked(0);
+            }
+            tolistResposity.save(toListEntity);
+
+        }
     }
 
 //    public List<ParkingLot> getParkingLotByPage(String page, String pageSize) {

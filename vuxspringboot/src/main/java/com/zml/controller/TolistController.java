@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin
-@RequestMapping("tolistentitys")
+@RequestMapping("to-list-entitys")
 @RestController
 public class TolistController {
 
@@ -31,5 +31,10 @@ public class TolistController {
         return ResponseEntity.ok().body(toListEntities);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity changeState(@PathVariable("id")String id,@RequestBody ToListEntityVo toListEntityVot) {
+       toListServe.changeState(id,toListEntityVot);
+        return ResponseEntity.ok().build();
+    }
 
 }

@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'todolist',
   props: {
@@ -21,36 +23,28 @@ export default {
       return {
      
       newTodoText:'',
-      nextTodoId:0,
+     
 
       }
   },
  created(){
-   this.axios.get("http://localhost:8080/tolistentitys").then(
-     res=>{
-          console.log(res);   
-     }
-   ).catch(reason => {
-                alert(reason)
-              });
+   
+   this.getAllItem()
+
  },
   methods:{
+  ...mapActions([
+      'getAllItem', // map `this.getAllItem()` to `this.$store.dispatch('getAllItem')`
+      'addItem',
+    ]),
       addNewTodo(){
-          if(this.newTodoText!=''){
+          if(this.newTodoText!=''&&this.newTodoText!=null){
           let item={
-              id:this.nextTodoId++,
               title:this.newTodoText,
               isEven:false,
               state:false
           }
-          this.$store.commit("addTodos1",item);
-          this.axios.post("http://localhost:8080/tolistentitys",item).then(
-            res=>{
-                console.log(res);
-            }
-          ).catch(reason => {
-                alert(reason)
-              });
+          this.addItem(item);
           this.newTodoText='';   
           }
            
