@@ -74,7 +74,7 @@ public class ToListTest {
     }
 
     @Test
-    public void should_return_parkinglot_when_put_parkinglot() throws Exception{
+    public void should_return_is_ok_when_put_toListEntity() throws Exception{
         //given
         ToListEntity toListEntity = new ToListEntity();
         toListEntity.setIsChecked(0);
@@ -102,8 +102,23 @@ public class ToListTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
+    }
 
+    @Test
+    public void should_return_is_ok_when_delete_to_do_list_by_id() throws Exception{
+        //given
+        ToListEntity toListEntity = new ToListEntity();
+        toListEntity.setIsChecked(0);
+        toListEntity.setTitle("todolist1");
+        toListEntity.setIsEven(0);
+        ToListEntity toListEntity1=toListResposity.save(toListEntity);
 
+        //when
+        //then
+        this.mockMvc.perform(delete("/to-list-entitys/"+toListEntity1.getId())
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
 
     }
 }

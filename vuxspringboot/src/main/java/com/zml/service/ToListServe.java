@@ -57,37 +57,8 @@ public class ToListServe {
         }
     }
 
-//    public List<ParkingLot> getParkingLotByPage(String page, String pageSize) {
-//        Page<ParkingLot> parkingLots=parkingLotResposity.findAll
-//                (PageRequest.of(Integer.valueOf(page)-1,Integer.valueOf(pageSize)));
-//        return parkingLots.getContent();
-//
-//    }
-//
-//
-//    public boolean save(ParkingLot parkingLot) {
-//        ParkingLot parkingLot1=parkingLotResposity.save(parkingLot);
-//        return parkingLot1.getId()!=null?true:false;
-//    }
-//
-//    public void deleteById(String id) {
-//        parkingLotResposity.deleteById(id);
-//
-//    }
-//
-//    public ParkingLot findParkingLotByID(String id) {
-//        return parkingLotResposity.findById(id).get();
-//
-//    }
-//
-//    public ParkingLot changeParkingLot(ParkingLot parkingLot,String id) {
-//        ParkingLot parkingLot1=parkingLotResposity.findById(id).get();
-//        Optional<ParkingLot> optionalParkingLot = Optional.of(parkingLot1);
-//        if (optionalParkingLot.isPresent()) {
-//            parkingLot1.setName(parkingLot.getPosition());
-//            parkingLot1.setCapicity(parkingLot.getCapicity());
-//            parkingLot1.setPosition(parkingLot.getPosition());
-//        }
-//        return   parkingLotResposity.saveAndFlush(parkingLot1);
-//    }
+    public void deleteById(String id) {
+        tolistResposity.deleteById(Integer.valueOf(id));
+    }
+
 }

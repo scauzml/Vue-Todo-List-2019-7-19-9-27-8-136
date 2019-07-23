@@ -37,4 +37,11 @@ public class TolistController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteParkingLot(@PathVariable("id")String id) {
+        toListServe.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+
 }
