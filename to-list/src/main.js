@@ -9,12 +9,18 @@ import todisplay from './components/tolistdisplay'
 import name from './components/name'
 import App from './App.vue'
 
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
 
+
+Vue.config.productionTip = false
+Vue.use(Antd)
 Vue.use(VueRouter);
 Vue.use(axios);
 Vue.prototype.$axios = axios;
-Vue.config.productionTip = false
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';           //配置请求头
+
+
 
 const routes = [
   { path: '/', name: "welcome", component: Welcome },

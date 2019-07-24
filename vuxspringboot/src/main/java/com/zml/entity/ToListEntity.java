@@ -13,7 +13,7 @@ public class ToListEntity {
     @Column(name = "is_checked")
     private int isChecked;
     @Column(name = "is_even")
-    private int isEven=0;
+        private int isEven=0;
 
     public ToListEntity() {
     }

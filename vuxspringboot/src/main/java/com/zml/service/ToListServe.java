@@ -62,7 +62,7 @@ public class ToListServe {
         Optional<ToListEntity> byId = tolistResposity.findById(Integer.valueOf(id));
         if (byId.isPresent()) {
             ToListEntity toListEntity = byId.get();
-            if (toListEntityVot.isState()) {
+            if (!toListEntityVot.isState()) {
                 toListEntity.setIsChecked(1);
             }else {
                 toListEntity.setIsChecked(0);

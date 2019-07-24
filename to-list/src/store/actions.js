@@ -9,7 +9,7 @@ export default{
         
         axios.post("http://localhost:8082/to-list-entitys",item).then(
             res=>{
-                console.log(res)
+               
                 let item={};
                 let e=res.data;
                 
@@ -68,10 +68,11 @@ export default{
     });
     },
     changeState({commit},item){
-         item.state=!item.state;
+       
        axios.put("http://localhost:8082/to-list-entitys/"+item.id,item).then(
            e=>{
-              
+
+            item.state=!item.state;
            }
        ).catch(reason => {
         alert(reason)
